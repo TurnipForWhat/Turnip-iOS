@@ -9,7 +9,21 @@
 import UIKit
 
 class MainViewController: UIViewController {
+    
 
+    @IBOutlet weak var myLabel: UILabel!
+    @IBOutlet weak var mySwitch: UISwitch!
+    
+
+    @IBAction func switchPressed(sender: AnyObject) {
+        
+        if mySwitch.on {
+            myLabel.text = "On"
+        } else {
+            myLabel.text = "Off"
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -21,5 +35,11 @@ class MainViewController: UIViewController {
     }
 
 
+}
+
+class customUISWitch: UISwitch {
+  override func awakeFromNib() {
+        self.transform = CGAffineTransformMakeScale(1.5, 1.5);
+    }
 }
 
