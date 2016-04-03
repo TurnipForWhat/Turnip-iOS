@@ -12,17 +12,17 @@ class MainViewController: UIViewController {
     
 
     @IBOutlet weak var myLabel: UILabel!
-    @IBOutlet weak var mySwitch: UISwitch!
+    @IBOutlet weak var mySwitch: customUISWitch!
     
 
     @IBAction func switchPressed(sender: AnyObject) {
-        
         if mySwitch.on {
             myLabel.text = "On"
         } else {
             myLabel.text = "Off"
         }
     }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
