@@ -19,12 +19,16 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         loginButton.center = self.view.center
         loginButton.readPermissions = ["public_profile", "email", "user_friends"]
         loginButton.delegate = self
+    }
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
 
         if (FBSDKAccessToken.currentAccessToken() != nil)
         {
             self.returnUserData()
+            performFromLogin()
         }
-
     }
 
     // Facebook Delegate Methods
@@ -47,6 +51,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             if result.grantedPermissions.contains("email")
             {
                 // Do work
+                performFromLogin()
             }
 
             self.returnUserData()
@@ -83,6 +88,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
+    func performFromLogin() {
+        self.performSegueWithIdentifier("fromLogin", sender: nil)
+    }
     
 }
