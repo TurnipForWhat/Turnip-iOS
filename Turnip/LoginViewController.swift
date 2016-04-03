@@ -9,12 +9,14 @@
 import UIKit
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
 
         let loginButton : FBSDKLoginButton = FBSDKLoginButton()
+        loginButton.frame=CGRectMake(0,0,250,60);
         self.view.addSubview(loginButton)
         loginButton.center = self.view.center
         loginButton.readPermissions = ["public_profile", "email", "user_friends"]
