@@ -10,15 +10,27 @@ import UIKit
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 
+    @IBOutlet weak var emailTextBox: UITextField!
+    @IBOutlet weak var passTextBox: UITextField!
+    @IBOutlet weak var emailLoginButton: UIButton!
+    @IBOutlet weak var loginWithEmailButton: UIButton!
+    var facebookLoginButton : FBSDKLoginButton = FBSDKLoginButton()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
-        let loginButton : FBSDKLoginButton = FBSDKLoginButton()
-        self.view.addSubview(loginButton)
-        loginButton.center = self.view.center
-        loginButton.readPermissions = ["public_profile", "email", "user_friends"]
-        loginButton.delegate = self
+        // Setup facebook login button
+        self.view.addSubview(facebookLoginButton)
+        facebookLoginButton.center = self.view.center
+        facebookLoginButton.readPermissions = ["public_profile", "email", "user_friends"]
+        facebookLoginButton.delegate = self
+
+        // Hide the things we don't need for FB login
+        emailTextBox.hidden = true
+        passTextBox.hidden = true
+        emailLoginButton.hidden = true
+
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -84,13 +96,28 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         })
     }
 
+    @IBAction func loginWithEmailPressed(sender: UIButton) {
+        facebookLoginButton.hidden = !(facebookLoginButton.hidden)
+        emailTextBox.hidden = !(emailTextBox.hidden)
+        passTextBox.hidden = !(passTextBox.hidden)
+        emailLoginButton.hidden = !(emailLoginButton.hidden)
+
+        if (emailTextBox.hidden) {
+            loginWithEmailButton.setTitle("Login with email", forState: UIControlState.Normal)
+        }
+        else {
+            loginWithEmailButton.setTitle("Login with Facebook", forState: UIControlState.Normal)
+        }
+
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
     func performFromLogin() {
-        self.performSegueWithIdentifier("fromLogin", sender: nil)
+        //self.performSegueWithIdentifier("fromLogin", sender: nil)
     }
     
 }
