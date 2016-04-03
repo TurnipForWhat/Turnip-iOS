@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F65910571CB19D05004C583B /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F65910561CB19D05004C583B /* FBSDKCoreKit.framework */; };
+		F659105A1CB19EA9004C583B /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F65910591CB19EA9004C583B /* FBSDKLoginKit.framework */; };
+		F659105C1CB19EB4004C583B /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F659105B1CB19EB4004C583B /* Bolts.framework */; };
+		F659105E1CB19F3C004C583B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F659105D1CB19F3C004C583B /* LoginViewController.swift */; };
 		F668346F1C8108DE00AB8E1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F668346E1C8108DE00AB8E1D /* AppDelegate.swift */; };
 		F66834711C8108DE00AB8E1D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66834701C8108DE00AB8E1D /* MainViewController.swift */; };
 		F66834731C8108DE00AB8E1D /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66834721C8108DE00AB8E1D /* ChatViewController.swift */; };
@@ -35,6 +39,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F65910561CB19D05004C583B /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		F65910581CB19DFD004C583B /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		F65910591CB19EA9004C583B /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		F659105B1CB19EB4004C583B /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		F659105D1CB19F3C004C583B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F668346B1C8108DE00AB8E1D /* Turnip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Turnip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F668346E1C8108DE00AB8E1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F66834701C8108DE00AB8E1D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +65,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F659105C1CB19EB4004C583B /* Bolts.framework in Frameworks */,
+				F659105A1CB19EA9004C583B /* FBSDKLoginKit.framework in Frameworks */,
+				F65910571CB19D05004C583B /* FBSDKCoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +88,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F65910551CB19C77004C583B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F659105B1CB19EB4004C583B /* Bolts.framework */,
+				F65910591CB19EA9004C583B /* FBSDKLoginKit.framework */,
+				F65910561CB19D05004C583B /* FBSDKCoreKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F66834621C8108DE00AB8E1D = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +105,7 @@
 				F66834841C8108DE00AB8E1D /* TurnipTests */,
 				F668348F1C8108DE00AB8E1D /* TurnipUITests */,
 				F668346C1C8108DE00AB8E1D /* Products */,
+				F65910551CB19C77004C583B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -100,12 +123,14 @@
 			isa = PBXGroup;
 			children = (
 				F668346E1C8108DE00AB8E1D /* AppDelegate.swift */,
+				F659105D1CB19F3C004C583B /* LoginViewController.swift */,
 				F66834701C8108DE00AB8E1D /* MainViewController.swift */,
 				F66834721C8108DE00AB8E1D /* ChatViewController.swift */,
 				F66834741C8108DE00AB8E1D /* Main.storyboard */,
 				F66834771C8108DE00AB8E1D /* Assets.xcassets */,
 				F66834791C8108DE00AB8E1D /* LaunchScreen.storyboard */,
 				F668347C1C8108DE00AB8E1D /* Info.plist */,
+				F65910581CB19DFD004C583B /* Bridging-Header.h */,
 			);
 			path = Turnip;
 			sourceTree = "<group>";
@@ -259,6 +284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F659105E1CB19F3C004C583B /* LoginViewController.swift in Sources */,
 				F66834731C8108DE00AB8E1D /* ChatViewController.swift in Sources */,
 				F668346F1C8108DE00AB8E1D /* AppDelegate.swift in Sources */,
 				F66834711C8108DE00AB8E1D /* MainViewController.swift in Sources */,
@@ -403,10 +429,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Turnip/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.turnip.Turnip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Turnip/Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -414,10 +445,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Turnip/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.turnip.Turnip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Turnip/Bridging-Header.h";
 			};
 			name = Release;
 		};
