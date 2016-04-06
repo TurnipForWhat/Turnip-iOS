@@ -23,11 +23,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
-        func dismissKeyboard() {
-            // Causes the view (or one of its embedded text fields) to resign the first responder status.
-            view.endEditing(true)
-        }
-        
         // Do any additional setup after loading the view, typically from a nib.
 
         // Setup facebook login button
@@ -41,6 +36,11 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         passTextBox.hidden = true
         emailLoginButton.hidden = true
 
+    }
+    
+    func dismissKeyboard() {
+        // Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
 
     override func viewDidAppear(animated: Bool) {
