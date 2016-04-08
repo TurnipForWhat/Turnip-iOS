@@ -10,10 +10,19 @@ import UIKit
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 
+    @IBOutlet weak var registerCancel: UIButton!
+
+    @IBOutlet weak var nameTextBox: UITextField!
     @IBOutlet weak var emailTextBox: UITextField!
     @IBOutlet weak var passTextBox: UITextField!
+    @IBOutlet weak var confirmPasswordTextBox: UITextField!
+
     @IBOutlet weak var emailLoginButton: UIButton!
     @IBOutlet weak var loginWithEmailButton: UIButton!
+    @IBOutlet weak var registerNewUserButton: UIButton!
+
+    var registerNewUser = false
+
     var facebookLoginButton : FBSDKLoginButton = FBSDKLoginButton()
 
     override func viewDidLoad() {
@@ -32,8 +41,11 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         facebookLoginButton.delegate = self
 
         // Hide the things we don't need for FB login
+        registerCancel.hidden = true
+        nameTextBox.hidden = true
         emailTextBox.hidden = true
         passTextBox.hidden = true
+        confirmPasswordTextBox.hidden = true
         emailLoginButton.hidden = true
 
     }
@@ -119,6 +131,42 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             loginWithEmailButton.setTitle("Login with Facebook", forState: UIControlState.Normal)
         }
 
+    }
+
+    @IBAction func cancelPressed(sender: UIButton) {
+        registerCancel.hidden = true
+        facebookLoginButton.hidden = true
+        nameTextBox.hidden = true
+        emailTextBox.hidden = false
+        passTextBox.hidden = false
+        confirmPasswordTextBox.hidden = true
+        emailLoginButton.hidden = false
+        loginWithEmailButton.hidden = false
+        loginWithEmailButton.setTitle("Login with Facebook", forState: UIControlState.Normal)
+        registerNewUserButton.hidden = false
+
+        registerNewUser = false
+    }
+
+    @IBAction func registerNewUserPressed(sender: UIButton) {
+        if (!registerNewUser) {
+            registerCancel.hidden = false
+            facebookLoginButton.hidden = true
+            nameTextBox.hidden = false
+            emailTextBox.hidden = false
+            passTextBox.hidden = false
+            confirmPasswordTextBox.hidden = false
+            emailLoginButton.hidden = true
+            loginWithEmailButton.hidden = true
+            registerNewUserButton.hidden = false
+
+            registerNewUser = true
+        }
+        //else {
+            //Do things to register user with API
+            //Run cancle and drop back to login
+            //registerNewUser = false
+        //}
     }
 
     @IBAction func loginWithEmailAndPassword(sender: AnyObject) {
