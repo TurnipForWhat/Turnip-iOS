@@ -24,6 +24,10 @@ class MainViewController: UIViewController {
     }
 
     @IBAction func logoutPressed(sender: UIButton) {
+        // Logout from FB
+        let loginManager = FBSDKLoginManager()
+        loginManager.logOut()
+
         self.performSegueWithIdentifier("logout", sender: self)
     }
     
@@ -41,7 +45,7 @@ class MainViewController: UIViewController {
 }
 
 class customUISWitch: UISwitch {
-  override func awakeFromNib() {
+    override func awakeFromNib() {
         self.transform = CGAffineTransformMakeScale(1.5, 1.5);
     }
 }
