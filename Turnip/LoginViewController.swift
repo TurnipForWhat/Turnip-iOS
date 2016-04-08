@@ -121,6 +121,14 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     }
 
+    @IBAction func loginWithEmailAndPassword(sender: AnyObject) {
+        // Get user token from API
+        let prefs = NSUserDefaults.standardUserDefaults()
+        prefs.setValue("User token string", forKey: "utoken");
+        print(prefs.stringForKey("utoken")!);
+        performFromLogin();
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
