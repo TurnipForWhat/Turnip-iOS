@@ -23,6 +23,9 @@ class MainViewController: UIViewController {
         }
     }
 
+    @IBAction func logoutPressed(sender: UIButton) {
+        self.performSegueWithIdentifier("logout", sender: self)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

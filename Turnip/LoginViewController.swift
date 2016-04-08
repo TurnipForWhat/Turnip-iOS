@@ -127,7 +127,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
 
     func performFromLogin() {
-        self.performSegueWithIdentifier("fromLogin", sender: nil)
+        self.performSegueWithIdentifier("login", sender: nil)
     }
     
 }
