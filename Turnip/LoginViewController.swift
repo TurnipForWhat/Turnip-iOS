@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 
@@ -29,7 +30,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         super.viewDidLoad()
         
         // Looks for single or multiple taps.
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
         // Do any additional setup after loading the view, typically from a nib.
@@ -162,26 +163,107 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 
             registerNewUser = true
         }
-        //else {
-            //Do things to register user with API
-            //Run cancle and drop back to login
-            //registerNewUser = false
-        //}
+        else {
+//            Do things to register user with API
+//            Run cancle and drop back to login
+//            registerNewUser = false
+            
+            // For now insecure way of testing register
+//            POST /signup
+//                {
+//                    name: String,
+//                    email: String,
+//                    [optional password: String], *
+//                    [optional fbid: Integer],
+//                }
+//                >> { success: Boolean, login_token: String }
+            
+            let parameters = [
+                "name" : "Prince",
+                "email" : "poop@poop.com",
+                "password" : "poop"
+            ]
+            
+            Alamofire.request(.POST, "http://databaseproject.jaxbot.me/signup", parameters: parameters, encoding: .JSON)
+                .responseJSON { response in
+//                    print(response.request)
+                    print("Response: \(response.response)")
+                }
+        }
     }
 
     @IBAction func loginWithEmailAndPassword(sender: AnyObject) {
-        // Get user token from API
+        // Set standard User Default credentials
         let prefs = NSUserDefaults.standardUserDefaults()
-        prefs.setValue("User token string", forKey: "utoken");
-        print(prefs.stringForKey("utoken")!);
-        performFromLogin();
+        
+        let email:String? = emailTextBox.text
+        let password:String? = passTextBox.text
+        
+        print(email)
+        print(password)
+        
+        var parameters = [String:String]()
+        
+        if email != "" && password != "" {
+            // Get user token from API
+            parameters = [
+                "email"     : email!,
+                "password"  : password!
+            ]
+            
+            Alamofire.request(.POST, "http://databaseproject.jaxbot.me/login", parameters: parameters, encoding: .JSON)
+                .validate()
+                .responseJSON { response in
+                    print("Success: \(response.result.value!["success"])")
+                    print("Login token: \(response.result.value!["login_token"])")
+                    
+                    if let success = response.result.value!["success"] as? NSInteger{
+                        if success == 1 {
+                            if let utoken = response.result.value!["login_token"] as? NSString{
+                                prefs.setValue("User token string", forKey: utoken as String)
+                                self.performFromLogin();
+                            }
+                        } else {
+                            self.Alert("failed")
+                        }
+                    }
+                    
+                    
+            }
+        } else {
+
+            self.Alert("")
+        }
+        
+        
     }
 
+    @IBAction func Alert(sender: AnyObject)
+    {
+        var message = ""
+    
+        if (sender as! NSString == "") {
+            message += "Please be sure to input both email and password."
+        } else if (sender as! NSString == "failed") {
+            message += "Incorrect User or Password"
+        }
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle:UIAlertControllerStyle.Alert)
+        
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default)
+        { action -> Void in
+            // Put your code here
+            })
+        self.presentViewController(alertController, animated: true, completion: nil)
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
+    // Performs the Segue for transitioning into main screen
     func performFromLogin() {
         self.performSegueWithIdentifier("login", sender: nil)
     }
