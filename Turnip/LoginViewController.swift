@@ -178,17 +178,16 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 //                }
 //                >> { success: Boolean, login_token: String }
             
+            
+            // Forces input to parameters passed
+            // Assumes it works
             let parameters = [
-                "name" : "Prince",
-                "email" : "poop@poop.com",
-                "password" : "poop"
+                "name" : nameTextBox.text!,
+                "email" : emailTextBox.text!,
+                "password" : passTextBox.text!
             ]
             
             Alamofire.request(.POST, "http://databaseproject.jaxbot.me/signup", parameters: parameters, encoding: .JSON)
-                .responseJSON { response in
-//                    print(response.request)
-                    print("Response: \(response.response)")
-                }
         }
     }
 
@@ -198,9 +197,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         let email:String? = emailTextBox.text
         let password:String? = passTextBox.text
-        
-        print(email)
-        print(password)
         
         var parameters = [String:String]()
         
