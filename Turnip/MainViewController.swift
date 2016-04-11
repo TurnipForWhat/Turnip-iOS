@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class MainViewController: UIViewController {
     
@@ -16,11 +17,29 @@ class MainViewController: UIViewController {
     
 
     @IBAction func switchPressed(sender: AnyObject) {
+        
         if mySwitch.on {
             myLabel.text = "On"
         } else {
             myLabel.text = "Off"
         }
+        
+        retrieveStatus(mySwitch.on)
+    }
+
+    
+    func retrieveStatus(status: Bool) {
+        
+        let headers = [
+            "x-Access-Token": "0.lpd18oxvmurw9udi"
+        ]
+        
+        let parameters = [
+            "status" : status
+        ]
+        
+        Alamofire.request(.POST, "http://databaseproject.jaxbot.me/toggle", headers: headers, parameters: parameters, encoding: .JSON)
+    
     }
 
     @IBAction func logoutPressed(sender: UIButton) {
