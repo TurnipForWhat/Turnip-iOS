@@ -29,11 +29,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Looks for single or multiple taps.
+        // Looks for single or multiple taps outside of the keyboard.
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
-        
-        // Do any additional setup after loading the view, typically from a nib.
 
         // Setup facebook login button
         self.view.addSubview(facebookLoginButton)
@@ -50,24 +48,26 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         emailLoginButton.hidden = true
 
     }
-    
+
+    // Called from the appGestureRecognizer when any tap(s) are registered on the view.
     func dismissKeyboard() {
         // Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
     }
 
+    // Called when the view is presented to the user
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
 
+        // If the user is logged in with facebook already then redirect to the main
         if (FBSDKAccessToken.currentAccessToken() != nil)
         {
-            self.returnUserData()
+            //self.returnUserData()
             performFromLogin()
         }
     }
 
     // Facebook Delegate Methods
-
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         print("User Logged In")
 
@@ -82,16 +82,13 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
         else {
             // If you ask for multiple permissions at once, you
-            // should check if specific permissions missing
+            // TODO: should check if specific permissions missing
             if result.grantedPermissions.contains("email")
             {
                 // Do work
                 performFromLogin()
             }
-
-            self.returnUserData()
         }
-
     }
 
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
@@ -132,21 +129,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             loginWithEmailButton.setTitle("Login with Facebook", forState: UIControlState.Normal)
         }
 
-    }
-
-    @IBAction func cancelPressed(sender: UIButton) {
-        registerCancel.hidden = true
-        facebookLoginButton.hidden = true
-        nameTextBox.hidden = true
-        emailTextBox.hidden = false
-        passTextBox.hidden = false
-        confirmPasswordTextBox.hidden = true
-        emailLoginButton.hidden = false
-        loginWithEmailButton.hidden = false
-        loginWithEmailButton.setTitle("Login with Facebook", forState: UIControlState.Normal)
-        registerNewUserButton.hidden = false
-
-        registerNewUser = false
     }
 
     @IBAction func registerNewUserPressed(sender: UIButton) {
@@ -191,6 +173,21 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
     }
 
+    @IBAction func cancelPressed(sender: UIButton) {
+        registerCancel.hidden = true
+        facebookLoginButton.hidden = true
+        nameTextBox.hidden = true
+        emailTextBox.hidden = false
+        passTextBox.hidden = false
+        confirmPasswordTextBox.hidden = true
+        emailLoginButton.hidden = false
+        loginWithEmailButton.hidden = false
+        loginWithEmailButton.setTitle("Login with Facebook", forState: UIControlState.Normal)
+        registerNewUserButton.hidden = false
+
+        registerNewUser = false
+    }
+
     @IBAction func loginWithEmailAndPassword(sender: AnyObject) {
         // Set standard User Default credentials
         let prefs = NSUserDefaults.standardUserDefaults()
@@ -220,7 +217,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                                 self.performFromLogin();
                             }
                         } else {
-                            self.Alert("failed")
+                            self.Alert("Incorrect User or Password")
                         }
                     }
                     
@@ -228,7 +225,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             }
         } else {
 
-            self.Alert("")
+            self.Alert("Please be sure to input both email and password.")
         }
         
         
@@ -236,15 +233,14 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     @IBAction func Alert(sender: AnyObject)
     {
-        var message = ""
-    
-        if (sender as! NSString == "") {
-            message += "Please be sure to input both email and password."
-        } else if (sender as! NSString == "failed") {
-            message += "Incorrect User or Password"
+        var message = sender as! NSString
+        print(message)
+
+        if (message == "") {
+            message = "Unrecognized message"
         }
-        
-        let alertController = UIAlertController(title: title, message: message, preferredStyle:UIAlertControllerStyle.Alert)
+
+        let alertController = UIAlertController(title: title, message: (message as String), preferredStyle:UIAlertControllerStyle.Alert)
         
         alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default)
         { action -> Void in
