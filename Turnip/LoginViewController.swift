@@ -26,6 +26,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     var facebookLoginButton : FBSDKLoginButton = FBSDKLoginButton()
 
+    // Set standard User Default credentials
+    let prefs = NSUserDefaults.standardUserDefaults()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -63,6 +66,12 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         if (FBSDKAccessToken.currentAccessToken() != nil)
         {
             //self.returnUserData()
+            performFromLogin()
+        }
+
+        // If user's token is set then login
+        if (prefs.stringForKey("utoken") != "") {
+            print(prefs.stringForKey("utoken"))
             performFromLogin()
         }
     }
@@ -163,13 +172,35 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             
             // Forces input to parameters passed
             // Assumes it works
-            let parameters = [
-                "name" : nameTextBox.text!,
-                "email" : emailTextBox.text!,
-                "password" : passTextBox.text!
-            ]
-            
-            Alamofire.request(.POST, "http://databaseproject.jaxbot.me/signup", parameters: parameters, encoding: .JSON)
+            if (nameTextBox.text == "" || emailTextBox.text == "" || passTextBox.text == "" || confirmPasswordTextBox.text == "") {
+                Alert("Please enter all boxes")
+            }
+            else if (passTextBox.text != confirmPasswordTextBox.text) {
+                Alert("Passwords do not match")
+            }
+            // If you made it this far, log in
+            else {
+                let parameters = [
+                    "name" : nameTextBox.text!,
+                    "email" : emailTextBox.text!,
+                    "password" : passTextBox.text!
+                ]
+                //Fire request
+                Alamofire.request(.POST, "http://databaseproject.jaxbot.me/signup", parameters: parameters, encoding: .JSON)
+                    .responseJSON { response in
+                        let success = response.result.value!["success"] as? NSInteger
+                        let utoken = response.result.value!["login_token"] as! NSString
+                        if (success == 0) {
+                            self.Alert("Failed to register user")
+                        }
+                        else {
+                            print(utoken.lowercaseString)
+                            self.prefs.setValue(utoken, forKey: "utoken" as String)
+                            self.prefs.synchronize()
+                            self.performFromLogin()
+                        }
+                }
+            }
         }
     }
 
@@ -189,8 +220,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
 
     @IBAction func loginWithEmailAndPassword(sender: AnyObject) {
-        // Set standard User Default credentials
-        let prefs = NSUserDefaults.standardUserDefaults()
         
         let email:String? = emailTextBox.text
         let password:String? = passTextBox.text
@@ -213,8 +242,10 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                     if let success = response.result.value!["success"] as? NSInteger{
                         if success == 1 {
                             if let utoken = response.result.value!["login_token"] as? NSString{
-                                prefs.setValue("User token string", forKey: utoken as String)
-                                self.performFromLogin();
+                                self.prefs.setValue(utoken, forKey: "utoken" as String)
+                                self.prefs.synchronize()
+
+                                self.performFromLogin()
                             }
                         } else {
                             self.Alert("Incorrect User or Password")

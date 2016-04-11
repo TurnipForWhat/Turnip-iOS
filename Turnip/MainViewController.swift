@@ -14,6 +14,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var myLabel: UILabel!
     @IBOutlet weak var mySwitch: customUISWitch!
     
+    let prefs = NSUserDefaults.standardUserDefaults()
 
     @IBAction func switchPressed(sender: AnyObject) {
         if mySwitch.on {
@@ -27,6 +28,9 @@ class MainViewController: UIViewController {
         // Logout from FB
         let loginManager = FBSDKLoginManager()
         loginManager.logOut()
+
+        //Clear utoken
+        prefs.setValue("", forKey: "utoken" as String)
 
         self.performSegueWithIdentifier("logout", sender: self)
     }
