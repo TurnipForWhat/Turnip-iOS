@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D0B4A0E11CB75667005AE71F /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B4A0E01CB75667005AE71F /* FriendTableViewCell.swift */; };
 		F65910571CB19D05004C583B /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F65910561CB19D05004C583B /* FBSDKCoreKit.framework */; };
 		F659105A1CB19EA9004C583B /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F65910591CB19EA9004C583B /* FBSDKLoginKit.framework */; };
 		F659105C1CB19EB4004C583B /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F659105B1CB19EB4004C583B /* Bolts.framework */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D0B4A0E01CB75667005AE71F /* FriendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
 		F65910561CB19D05004C583B /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		F65910581CB19DFD004C583B /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		F65910591CB19EA9004C583B /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				F668346E1C8108DE00AB8E1D /* AppDelegate.swift */,
 				F659105D1CB19F3C004C583B /* LoginViewController.swift */,
 				F66834701C8108DE00AB8E1D /* MainViewController.swift */,
+				D0B4A0E01CB75667005AE71F /* FriendTableViewCell.swift */,
 				F66834741C8108DE00AB8E1D /* Main.storyboard */,
 				F66834771C8108DE00AB8E1D /* Assets.xcassets */,
 				F66834791C8108DE00AB8E1D /* LaunchScreen.storyboard */,
@@ -284,6 +287,7 @@
 				F659105E1CB19F3C004C583B /* LoginViewController.swift in Sources */,
 				F668346F1C8108DE00AB8E1D /* AppDelegate.swift in Sources */,
 				F66834711C8108DE00AB8E1D /* MainViewController.swift in Sources */,
+				D0B4A0E11CB75667005AE71F /* FriendTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,7 +435,7 @@
 				);
 				INFOPLIST_FILE = Turnip/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.turnip.Turnip;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.turnip.Turnip-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Turnip/Bridging-Header.h";
 			};
@@ -447,7 +451,7 @@
 				);
 				INFOPLIST_FILE = Turnip/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.turnip.Turnip;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.turnip.Turnip-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Turnip/Bridging-Header.h";
 			};
