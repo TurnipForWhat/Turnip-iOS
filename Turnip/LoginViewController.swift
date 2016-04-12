@@ -62,13 +62,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
 
-        // If the user is logged in with facebook already then redirect to the main
-        if (FBSDKAccessToken.currentAccessToken() != nil)
-        {
-            //self.returnUserData()
-            performFromLogin()
-        }
-
         // If user's token is set then login
         if (prefs.stringForKey("utoken") != "") {
             print(prefs.stringForKey("utoken"))
@@ -94,8 +87,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             // TODO: should check if specific permissions missing
             if result.grantedPermissions.contains("email")
             {
-                // Do work
-                performFromLogin()
+                // Login or register if new
+                fbLoginOrRegister()
             }
         }
     }
@@ -104,7 +97,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         print("User Logged Out")
     }
 
-    func returnUserData()
+    func fbLoginOrRegister()
     {
         let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, email"])
         graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
@@ -116,11 +109,15 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             }
             else
             {
-                print("fetched user: \(result)")
+                //print("fetched user: \(result)")
+                let userID : NSString = result.valueForKey("id") as! NSString
+                print("User ID is: \(userID)")
                 let userName : NSString = result.valueForKey("name") as! NSString
                 print("User Name is: \(userName)")
                 let userEmail : NSString = result.valueForKey("email") as! NSString
                 print("User Email is: \(userEmail)")
+
+
             }
         })
     }
