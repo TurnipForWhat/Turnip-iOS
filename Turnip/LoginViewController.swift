@@ -231,7 +231,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             parameters = [
                 "email"     : email!,
                 "password"  : password!
-            ]
+            ]   
             
             Alamofire.request(.POST, "http://databaseproject.jaxbot.me/login", parameters: parameters, encoding: .JSON)
                 .validate()

@@ -15,6 +15,9 @@ class FriendTableViewCell: UITableViewCell {
     @IBOutlet weak var FriendNameView: UIView!
     @IBOutlet weak var FriendStatusView: UIView!
     
+    @IBOutlet weak var FriendNameLabel: UILabel!
+    @IBOutlet weak var FriendStatusLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

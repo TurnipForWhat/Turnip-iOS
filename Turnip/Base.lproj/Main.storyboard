@@ -24,7 +24,7 @@
                                     <constraint firstAttribute="height" constant="413" id="Iak-8g-u6V"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="70" id="Ea9-L7-GGe" customClass="FriendTableViewCell" customModule="Turnip" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FriendTableViewCell1" rowHeight="70" id="Ea9-L7-GGe" customClass="FriendTableViewCell" customModule="Turnip" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ea9-L7-GGe" id="xvD-w8-nh5">
@@ -32,20 +32,42 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="turnipSquare" translatesAutoresizingMaskIntoConstraints="NO" id="2K6-qe-K9L">
-                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                                                    <rect key="frame" x="14" y="0.0" width="70" height="70"/>
                                                 </imageView>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uz8-IO-qoc" customClass="FriendName">
-                                                    <rect key="frame" x="78" y="8" width="234" height="21"/>
+                                                <view tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uz8-IO-qoc">
+                                                    <rect key="frame" x="110" y="8" width="202" height="21"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqu-ZM-cvP">
+                                                            <rect key="frame" x="0.0" y="0.0" width="202" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <accessibility key="accessibilityConfiguration" identifier="nameLabel" label="FriendName"/>
                                                 </view>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iUC-CG-DX7" customClass="FriendStatus">
-                                                    <rect key="frame" x="78" y="37" width="242" height="32"/>
+                                                <view tag="2" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iUC-CG-DX7">
+                                                    <rect key="frame" x="110" y="37" width="210" height="32"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s6P-lx-pVp">
+                                                            <rect key="frame" x="0.0" y="5" width="197" height="21"/>
+                                                            <accessibility key="accessibilityConfiguration" identifier="FriendStatusLabel"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <accessibility key="accessibilityConfiguration" identifier="statusLabel" label="FriendStatus"/>
                                                 </view>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="FriendIcon" destination="2K6-qe-K9L" id="sF0-yw-9cJ"/>
+                                            <outlet property="FriendNameLabel" destination="gqu-ZM-cvP" id="VDn-H0-s1J"/>
+                                            <outlet property="FriendStatusLabel" destination="s6P-lx-pVp" id="udf-K2-s2e"/>
+                                            <outlet property="FriendStatusView" destination="s6P-lx-pVp" id="Ori-Vw-mTF"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -104,6 +126,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Main" image="main" id="acW-dT-cKf"/>
                     <connections>
+                        <outlet property="friendTableView" destination="WJv-eu-CD6" id="688-U5-blC"/>
                         <outlet property="myLabel" destination="msH-hE-h1b" id="1EB-Yh-rWV"/>
                         <outlet property="mySwitch" destination="5d6-SL-vkk" id="noi-IL-Btj"/>
                         <segue destination="GV2-7O-QdD" kind="modal" identifier="logout" id="7bM-M3-be5"/>
