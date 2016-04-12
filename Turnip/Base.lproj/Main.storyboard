@@ -5,6 +5,68 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
+        <!--Settings-->
+        <scene sceneID="Wa2-JH-Lfa">
+            <objects>
+                <viewController id="swD-du-LA9" userLabel="Settings" customClass="SettingsViewController" customModule="Turnip" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eHU-Wi-K9D"/>
+                        <viewControllerLayoutGuide type="bottom" id="zK2-AF-MfV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hNp-NW-3as">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bi5-an-6MA">
+                                <rect key="frame" x="20" y="20" width="49" height="30"/>
+                                <state key="normal" title="&lt; Back">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="logoutPressed:" destination="9pv-A4-QxB" eventType="touchUpInside" id="9gh-mf-wxB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7qa-zE-bxz">
+                                <rect key="frame" x="99" y="208" width="123" height="30"/>
+                                <state key="normal" title="Change Password">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j4w-3y-4So">
+                                <rect key="frame" x="113" y="246" width="94" height="30"/>
+                                <state key="normal" title="Upload Photo">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sSi-gG-6xA">
+                                <rect key="frame" x="111" y="132" width="98" height="30"/>
+                                <state key="normal" title="Change Name">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wiw-Qe-AVa">
+                                <rect key="frame" x="113" y="170" width="94" height="30"/>
+                                <state key="normal" title="Change Email">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.6588235294117647" green="0.54117647058823526" blue="0.67450980392156867" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="sSi-gG-6xA" firstAttribute="centerX" secondItem="hNp-NW-3as" secondAttribute="centerX" id="Uwn-sb-EPQ"/>
+                            <constraint firstItem="j4w-3y-4So" firstAttribute="centerX" secondItem="hNp-NW-3as" secondAttribute="centerX" id="awg-6i-b5t"/>
+                            <constraint firstItem="wiw-Qe-AVa" firstAttribute="centerX" secondItem="hNp-NW-3as" secondAttribute="centerX" id="hVx-Qm-yyi"/>
+                            <constraint firstItem="7qa-zE-bxz" firstAttribute="centerX" secondItem="hNp-NW-3as" secondAttribute="centerX" id="xqM-aX-c5O"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <segue destination="9pv-A4-QxB" kind="modal" identifier="fromSettings" id="y9p-O4-NGc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0S6-gc-nxg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="569" y="6"/>
+        </scene>
         <!--Main-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
@@ -107,6 +169,7 @@
                         <outlet property="myLabel" destination="msH-hE-h1b" id="1EB-Yh-rWV"/>
                         <outlet property="mySwitch" destination="5d6-SL-vkk" id="noi-IL-Btj"/>
                         <segue destination="GV2-7O-QdD" kind="modal" identifier="logout" id="7bM-M3-be5"/>
+                        <segue destination="swD-du-LA9" kind="modal" identifier="toSettings" id="grK-i4-vwb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -243,4 +306,7 @@
         <image name="main" width="30" height="30"/>
         <image name="turnipSquare" width="309" height="309"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="y9p-O4-NGc"/>
+    </inferredMetricsTieBreakers>
 </document>

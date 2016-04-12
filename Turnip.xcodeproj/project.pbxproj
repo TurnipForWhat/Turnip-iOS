@@ -14,6 +14,7 @@
 		F659105A1CB19EA9004C583B /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F65910591CB19EA9004C583B /* FBSDKLoginKit.framework */; };
 		F659105C1CB19EB4004C583B /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F659105B1CB19EB4004C583B /* Bolts.framework */; };
 		F659105E1CB19F3C004C583B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F659105D1CB19F3C004C583B /* LoginViewController.swift */; };
+		F665F82F1CBC8D430002E5AD /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F665F82E1CBC8D430002E5AD /* SettingsViewController.swift */; };
 		F668346F1C8108DE00AB8E1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F668346E1C8108DE00AB8E1D /* AppDelegate.swift */; };
 		F66834711C8108DE00AB8E1D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66834701C8108DE00AB8E1D /* MainViewController.swift */; };
 		F66834761C8108DE00AB8E1D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F66834741C8108DE00AB8E1D /* Main.storyboard */; };
@@ -50,6 +51,7 @@
 		F65910591CB19EA9004C583B /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		F659105B1CB19EB4004C583B /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		F659105D1CB19F3C004C583B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		F665F82E1CBC8D430002E5AD /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		F668346B1C8108DE00AB8E1D /* Turnip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Turnip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F668346E1C8108DE00AB8E1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F66834701C8108DE00AB8E1D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				F659105D1CB19F3C004C583B /* LoginViewController.swift */,
 				F66834701C8108DE00AB8E1D /* MainViewController.swift */,
 				D0B4A0E01CB75667005AE71F /* FriendTableViewCell.swift */,
+				F665F82E1CBC8D430002E5AD /* SettingsViewController.swift */,
 				F66834741C8108DE00AB8E1D /* Main.storyboard */,
 				F66834771C8108DE00AB8E1D /* Assets.xcassets */,
 				F66834791C8108DE00AB8E1D /* LaunchScreen.storyboard */,
@@ -358,6 +361,7 @@
 				F659105E1CB19F3C004C583B /* LoginViewController.swift in Sources */,
 				F668346F1C8108DE00AB8E1D /* AppDelegate.swift in Sources */,
 				F66834711C8108DE00AB8E1D /* MainViewController.swift in Sources */,
+				F665F82F1CBC8D430002E5AD /* SettingsViewController.swift in Sources */,
 				D0B4A0E11CB75667005AE71F /* FriendTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
