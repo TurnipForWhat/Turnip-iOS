@@ -11,6 +11,8 @@ import Alamofire
 
 class SettingsViewController: UIViewController {
     
+    let prefs = NSUserDefaults.standardUserDefaults()
+    
     @IBOutlet weak var changeName: UIButton!
     
     @IBAction func changeNamePressed(sender: AnyObject) {
@@ -30,22 +32,23 @@ class SettingsViewController: UIViewController {
         nameAlertController.addAction(UIAlertAction(title: "Save", style: UIAlertActionStyle.Default)
         { action -> Void in
             let textField = nameAlertController.textFields![0] as UITextField
-            print(textField.text)
+            let nameString = textField.text
+            self.updateName(nameString!)
             })
         self.presentViewController(nameAlertController, animated: true, completion: nil)
     }
     
-    func updateName(status: Bool) {
+    func updateName(name: String) {
         
         let headers = [
-            "x-Access-Token": "0.lpd18oxvmurw9udi"
+            "x-Access-Token": prefs.stringForKey("utoken")!
         ]
         
         let parameters = [
-            "name" : "hi"
+            "name" : name
         ]
         
-        Alamofire.request(.POST, "http://databaseproject.jaxbot.me/toggle", headers: headers, parameters: parameters, encoding: .JSON)
+        Alamofire.request(.PUT, "http://databaseproject.jaxbot.me/profile", headers: headers, parameters: parameters, encoding: .JSON)
         
     }
     
