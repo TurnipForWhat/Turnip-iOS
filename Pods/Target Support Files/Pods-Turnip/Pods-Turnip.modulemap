@@ -1,0 +1,6 @@
+framework module Pods_Turnip {
+  umbrella header "Pods-Turnip-umbrella.h"
+
+  export *
+  module * { export * }
+}
