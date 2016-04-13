@@ -107,12 +107,16 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         Alamofire.request(.GET, "http://databaseproject.jaxbot.me/feed", headers: headers)
             .validate()
             .responseJSON{ response in
-                friendsArray = response.result.value!["friends"] as! NSArray
-                
-                dispatch_async(dispatch_get_main_queue (), {
-                    self.populateFriends(friendsArray);
-                    self.friendTableView!.reloadData()
-                })
+                switch response.result {
+                case .Success:
+                    friendsArray = response.result.value!["friends"] as! NSArray
+                    dispatch_async(dispatch_get_main_queue (), {
+                        self.populateFriends(friendsArray);
+                        self.friendTableView!.reloadData()
+                    })
+                case .Failure:
+                    self.performSegueWithIdentifier("logout", sender: self)
+                }
         }
     }
     
