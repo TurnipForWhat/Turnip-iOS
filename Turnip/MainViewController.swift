@@ -19,9 +19,9 @@ class MainViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var settingsButton: UIButton!
     
     
-    
     let prefs = NSUserDefaults.standardUserDefaults()
     
+    var refreshControl: UIRefreshControl!
     var friends = [FriendWrapper]()
 
     @IBAction func switchPressed(sender: AnyObject) {
@@ -74,14 +74,27 @@ class MainViewController: UIViewController, UITableViewDataSource {
         // Do any additional setup after loading the view, typically from a nib.
         
 //        self.friendTableViewController  = [[FriendTableViewController alloc] init]
-        
+
         friendTableView.dataSource = self
+        
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        self.refreshControl.addTarget(self, action: #selector(MainViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        self.friendTableView.addSubview(self.refreshControl) // not required when using UITableViewController
     }
     
+    func refresh(sender:AnyObject){
+        getFriends()
+        friendTableView.dataSource = self
+        
+        self.refreshControl.endRefreshing()
+    }
     
     // Logic for gathering friend's list
     
     func getFriends(){
+        
+        friends = []
         
         let headers = [
             "x-Access-Token": prefs.stringForKey("utoken")!
