@@ -153,7 +153,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
         else {
 //            Do things to register user with API
-//            Run cancle and drop back to login
+//            Run cancel and drop back to login
 //            registerNewUser = false
             
             // For now insecure way of testing register

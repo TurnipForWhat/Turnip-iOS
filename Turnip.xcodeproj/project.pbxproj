@@ -519,7 +519,7 @@
 				);
 				INFOPLIST_FILE = Turnip/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.turnip.Turnip;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.turnip.Turnip-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Turnip/Bridging-Header.h";
 			};
@@ -536,7 +536,7 @@
 				);
 				INFOPLIST_FILE = Turnip/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.turnip.Turnip;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.turnip.Turnip-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Turnip/Bridging-Header.h";
 			};
