@@ -41,7 +41,7 @@ class MainViewController: UIViewController, UITableViewDataSource {
     func toggleStatus(status: Bool) {
         
         let headers = [
-            "x-Access-Token": "0.lpd18oxvmurw9udi"
+            "x-Access-Token": prefs.stringForKey("utoken")!
         ]
         
         let parameters = [
@@ -84,7 +84,7 @@ class MainViewController: UIViewController, UITableViewDataSource {
     func getFriends(){
         
         let headers = [
-            "x-Access-Token": "0.lpd18oxvmurw9udi"
+            "x-Access-Token": prefs.stringForKey("utoken")!
         ]
         var friendsArray: NSArray = []
         
