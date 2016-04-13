@@ -233,9 +233,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             Alamofire.request(.POST, "http://databaseproject.jaxbot.me/login", parameters: parameters, encoding: .JSON)
                 .validate()
                 .responseJSON { response in
-                    print("Success: \(response.result.value!["success"])")
-                    print("Login token: \(response.result.value!["login_token"])")
-                    
                     if let success = response.result.value!["success"] as? NSInteger{
                         if success == 1 {
                             if let utoken = response.result.value!["login_token"] as? NSString{
@@ -262,7 +259,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBAction func Alert(sender: AnyObject)
     {
         var message = sender as! NSString
-        print(message)
 
         if (message == "") {
             message = "Unrecognized message"
