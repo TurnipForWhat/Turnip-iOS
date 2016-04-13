@@ -16,6 +16,7 @@ class MainViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var myLabel: UILabel!
     @IBOutlet weak var mySwitch: customUISWitch!
     @IBOutlet weak var friendTableView: UITableView!
+    @IBOutlet weak var settingsButton: UIButton!
     
     
     
@@ -61,6 +62,11 @@ class MainViewController: UIViewController, UITableViewDataSource {
 
         self.performSegueWithIdentifier("logout", sender: self)
     }
+    
+    @IBAction func settingsPressed(sender: AnyObject) {
+        self.performSegueWithIdentifier("toSettings", sender: self)
+    }
+    
     
     override func viewDidLoad() {
         getFriends()

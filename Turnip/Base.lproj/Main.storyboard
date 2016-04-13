@@ -23,6 +23,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
+                                    <action selector="backButtonPressed:" destination="swD-du-LA9" eventType="touchUpInside" id="jy6-Li-R63"/>
                                     <action selector="logoutPressed:" destination="9pv-A4-QxB" eventType="touchUpInside" id="9gh-mf-wxB"/>
                                 </connections>
                             </button>
@@ -60,6 +61,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backButton" destination="Bi5-an-6MA" id="Ut3-2W-CZw"/>
                         <segue destination="9pv-A4-QxB" kind="modal" identifier="fromSettings" id="y9p-O4-NGc"/>
                     </connections>
                 </viewController>
@@ -102,7 +104,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqu-ZM-cvP">
                                                             <rect key="frame" x="0.0" y="0.0" width="202" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -116,7 +118,7 @@
                                                             <rect key="frame" x="0.0" y="5" width="197" height="21"/>
                                                             <accessibility key="accessibilityConfiguration" identifier="FriendStatusLabel"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -163,6 +165,15 @@
                                             <action selector="logoutPressed:" destination="9pv-A4-QxB" eventType="touchUpInside" id="geu-LU-bi4"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cr0-Bi-X2V">
+                                        <rect key="frame" x="255" y="8" width="57" height="30"/>
+                                        <state key="normal" title="Settings">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="settingsPressed:" destination="9pv-A4-QxB" eventType="touchUpInside" id="YHn-hl-RM4"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.58431372549019611" green="0.45882352941176469" blue="0.62352941176470589" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -191,6 +202,7 @@
                         <outlet property="friendTableView" destination="WJv-eu-CD6" id="688-U5-blC"/>
                         <outlet property="myLabel" destination="msH-hE-h1b" id="1EB-Yh-rWV"/>
                         <outlet property="mySwitch" destination="5d6-SL-vkk" id="noi-IL-Btj"/>
+                        <outlet property="settingsButton" destination="Cr0-Bi-X2V" id="4SW-ip-eeW"/>
                         <segue destination="GV2-7O-QdD" kind="modal" identifier="logout" id="7bM-M3-be5"/>
                         <segue destination="swD-du-LA9" kind="modal" identifier="toSettings" id="grK-i4-vwb"/>
                     </connections>
