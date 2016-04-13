@@ -17,7 +17,7 @@ class SettingsViewController: UIViewController {
     
     @IBAction func changeNamePressed(sender: AnyObject) {
         
-        let nameAlertController = UIAlertController(title: "Change Name", message: "Update you name below", preferredStyle:UIAlertControllerStyle.Alert)
+        let nameAlertController = UIAlertController(title: "Change Name", message: "Update your name below", preferredStyle:UIAlertControllerStyle.Alert)
         
         nameAlertController.addTextFieldWithConfigurationHandler(
             {(textField: UITextField!) in
@@ -26,7 +26,7 @@ class SettingsViewController: UIViewController {
         
         nameAlertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default)
         { action -> Void in
-            // Put your code here
+            // Closes alert
             })
         
         nameAlertController.addAction(UIAlertAction(title: "Save", style: UIAlertActionStyle.Default)
@@ -46,6 +46,44 @@ class SettingsViewController: UIViewController {
         
         let parameters = [
             "name" : name
+        ]
+        
+        Alamofire.request(.PUT, "http://databaseproject.jaxbot.me/profile", headers: headers, parameters: parameters, encoding: .JSON)
+        
+    }
+    
+    @IBOutlet weak var changeEmail: UIButton!
+    
+    @IBAction func changeEmailPressed(sender: AnyObject) {
+        let emailAlertController = UIAlertController(title: "Change Email", message: "Update your email below", preferredStyle:UIAlertControllerStyle.Alert)
+        
+        emailAlertController.addTextFieldWithConfigurationHandler(
+            {(textField: UITextField!) in
+                textField.placeholder = "Enter Email"
+        })
+        
+        emailAlertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default)
+        { action -> Void in
+            // Closes alert
+            })
+        
+        emailAlertController.addAction(UIAlertAction(title: "Save", style: UIAlertActionStyle.Default)
+        { action -> Void in
+            let textField = emailAlertController.textFields![0] as UITextField
+            let nameEmail = textField.text
+            self.updateEmail(nameEmail!)
+            })
+        self.presentViewController(emailAlertController, animated: true, completion: nil)
+    }
+    
+    func updateEmail(email: String) {
+        
+        let headers = [
+            "x-Access-Token": prefs.stringForKey("utoken")!
+        ]
+        
+        let parameters = [
+            "email" : email
         ]
         
         Alamofire.request(.PUT, "http://databaseproject.jaxbot.me/profile", headers: headers, parameters: parameters, encoding: .JSON)

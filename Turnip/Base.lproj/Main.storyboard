@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="GV2-7O-QdD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="GV2-7O-QdD">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -53,6 +53,9 @@
                                 <state key="normal" title="Change Email">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="changeEmailPressed:" destination="swD-du-LA9" eventType="touchUpInside" id="BiE-AF-pDL"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.6588235294117647" green="0.54117647058823526" blue="0.67450980392156867" alpha="1" colorSpace="calibratedRGB"/>
@@ -65,6 +68,7 @@
                     </view>
                     <connections>
                         <outlet property="backButton" destination="Bi5-an-6MA" id="Ut3-2W-CZw"/>
+                        <outlet property="changeEmail" destination="wiw-Qe-AVa" id="gGD-IX-Z6b"/>
                         <outlet property="changeName" destination="sSi-gG-6xA" id="wZL-79-0hr"/>
                         <segue destination="9pv-A4-QxB" kind="modal" identifier="fromSettings" id="y9p-O4-NGc"/>
                     </connections>
@@ -105,7 +109,7 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DzK-oy-eHV">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DzK-oy-eHV">
                                         <rect key="frame" x="7" y="8" width="48" height="30"/>
                                         <state key="normal" title="Logout">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -114,7 +118,7 @@
                                             <action selector="logoutPressed:" destination="9pv-A4-QxB" eventType="touchUpInside" id="geu-LU-bi4"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cr0-Bi-X2V">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cr0-Bi-X2V">
                                         <rect key="frame" x="255" y="8" width="57" height="30"/>
                                         <state key="normal" title="Settings">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -128,7 +132,9 @@
                                 <constraints>
                                     <constraint firstItem="msH-hE-h1b" firstAttribute="centerX" secondItem="hTR-jN-OPa" secondAttribute="centerX" constant="3.5" id="gq4-PR-c8r"/>
                                     <constraint firstItem="msH-hE-h1b" firstAttribute="top" secondItem="5d6-SL-vkk" secondAttribute="bottom" constant="14" id="mIx-Y8-xai"/>
+                                    <constraint firstItem="Cr0-Bi-X2V" firstAttribute="centerX" secondItem="hTR-jN-OPa" secondAttribute="centerX" constant="140" id="nWc-y7-XDj"/>
                                     <constraint firstItem="5d6-SL-vkk" firstAttribute="centerX" secondItem="hTR-jN-OPa" secondAttribute="centerX" id="qVq-EN-g00"/>
+                                    <constraint firstItem="DzK-oy-eHV" firstAttribute="centerX" secondItem="hTR-jN-OPa" secondAttribute="centerX" constant="-140" id="vwj-dx-5iQ"/>
                                     <constraint firstAttribute="bottom" secondItem="msH-hE-h1b" secondAttribute="bottom" constant="37" id="x20-Ff-uew"/>
                                 </constraints>
                             </view>
@@ -143,7 +149,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ea9-L7-GGe" id="xvD-w8-nh5">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="69.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="69"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view tag="1" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uz8-IO-qoc">
