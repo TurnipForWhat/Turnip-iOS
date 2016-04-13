@@ -8,9 +8,10 @@
 
 import UIKit
 import Alamofire
+import AlamofireImage
 import SwiftyJSON
 
-class MainViewController: UIViewController, UITableViewDataSource {
+class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
 
     @IBOutlet weak var myLabel: UILabel!
@@ -57,6 +58,9 @@ class MainViewController: UIViewController, UITableViewDataSource {
         let loginManager = FBSDKLoginManager()
         loginManager.logOut()
 
+        // Set Status to False
+        toggleStatus(false)
+        
         //Clear utoken
         prefs.setValue("", forKey: "utoken" as String)
 
@@ -73,7 +77,6 @@ class MainViewController: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-//        self.friendTableViewController  = [[FriendTableViewController alloc] init]
 
         friendTableView.dataSource = self
         
@@ -106,7 +109,7 @@ class MainViewController: UIViewController, UITableViewDataSource {
             .responseJSON{ response in
                 friendsArray = response.result.value!["friends"] as! NSArray
                 
-                dispatch_async(dispatch_get_main_queue(), {
+                dispatch_async(dispatch_get_main_queue (), {
                     self.populateFriends(friendsArray);
                     self.friendTableView!.reloadData()
                 })
@@ -115,12 +118,37 @@ class MainViewController: UIViewController, UITableViewDataSource {
     
     func populateFriends(friendsArray: NSArray){
         
+        
         for index in friendsArray {
             let status = index["status"] as! Bool
             let name = index["name"] as! String
+            var image_id = index["profile_picture_id"] as! String
+            
+            
+            
             let dict: [String: AnyObject] = [FriendFields.name.rawValue: name, FriendFields.status.rawValue: status]
             let json = JSON(dict)
+            
             let friend = FriendWrapper(json: json)
+            
+            
+            if( image_id == ""){
+                image_id = "none"
+            }
+                Alamofire.request(.GET, "http://databaseproject.jaxbot.me/" + image_id + ".jpg")
+                .responseImage { response in
+      
+                    
+                    dispatch_async(dispatch_get_main_queue (), {
+                        if let image = response.result.value {
+                            friend.image = image
+                            print("Image: \(image)")
+                            self.friendTableView!.reloadData()
+                        }
+                    })
+                }
+            
+            
             
             self.friends += [friend]
         }
@@ -154,11 +182,17 @@ class MainViewController: UIViewController, UITableViewDataSource {
         }
         
         // Configure imageviews
-        // cell.imageView?.image = friendTableViewCell
+        cell.FriendIcon.image = (friends[indexPath.row].image != nil) ? friends[indexPath.row].image! as UIImage : nil
+        
         
         // Configure the cell...
         
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        print("You selected cell number: \(indexPath.row)!")
+//        self.performSegueWithIdentifier("yourIdentifier", sender: self)
     }
 
     override func didReceiveMemoryWarning() {

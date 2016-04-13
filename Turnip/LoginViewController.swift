@@ -233,20 +233,23 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             Alamofire.request(.POST, "http://databaseproject.jaxbot.me/login", parameters: parameters, encoding: .JSON)
                 .validate()
                 .responseJSON { response in
-                    if let success = response.result.value!["success"] as? NSInteger{
-                        if success == 1 {
-                            if let utoken = response.result.value!["login_token"] as? NSString{
-                                self.prefs.setValue(utoken, forKey: "utoken" as String)
-                                self.prefs.synchronize()
-
-                                self.performFromLogin()
+                    switch response.result {
+                    case .Success:
+                        if let success = response.result.value!["success"] as? NSInteger{
+                            if success == 1 {
+                                if let utoken = response.result.value!["login_token"] as? NSString{
+                                    self.prefs.setValue(utoken, forKey: "utoken" as String)
+                                    self.prefs.synchronize()
+                                        
+                                    self.performFromLogin()
+                                }
+                            } else {
+                                self.Alert("Incorrect User or Password")
                             }
-                        } else {
-                            self.Alert("Incorrect User or Password")
                         }
+                    case .Failure:
+                        self.Alert("Server is Down")
                     }
-                    
-                    
             }
         } else {
 
