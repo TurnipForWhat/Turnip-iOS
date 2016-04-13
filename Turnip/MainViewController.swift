@@ -85,6 +85,13 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.refreshControl.addTarget(self, action: #selector(MainViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
         self.friendTableView.addSubview(self.refreshControl) // not required when using UITableViewController
     }
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+
+        // Update status
+        toggleStatus(mySwitch.on)
+    }
     
     func refresh(sender:AnyObject){
         getFriends()
