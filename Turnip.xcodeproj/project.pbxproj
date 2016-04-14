@@ -12,6 +12,7 @@
 		A330DA701CBC5FAA000DEDB8 /* FriendFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = A330DA6F1CBC5FAA000DEDB8 /* FriendFields.swift */; };
 		A3FB671D1CB97AC60075457E /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = A3FB671C1CB97AC60075457E /* Podfile */; };
 		D0B4A0E11CB75667005AE71F /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B4A0E01CB75667005AE71F /* FriendTableViewCell.swift */; };
+		F650306C1CBF2D78004393FC /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F650306B1CBF2D78004393FC /* ChatViewController.swift */; };
 		F65910571CB19D05004C583B /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F65910561CB19D05004C583B /* FBSDKCoreKit.framework */; };
 		F659105A1CB19EA9004C583B /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F65910591CB19EA9004C583B /* FBSDKLoginKit.framework */; };
 		F659105C1CB19EB4004C583B /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F659105B1CB19EB4004C583B /* Bolts.framework */; };
@@ -50,6 +51,7 @@
 		A330DA6F1CBC5FAA000DEDB8 /* FriendFields.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendFields.swift; sourceTree = "<group>"; };
 		A3FB671C1CB97AC60075457E /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		D0B4A0E01CB75667005AE71F /* FriendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
+		F650306B1CBF2D78004393FC /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		F65910561CB19D05004C583B /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		F65910581CB19DFD004C583B /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		F65910591CB19EA9004C583B /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				F668346E1C8108DE00AB8E1D /* AppDelegate.swift */,
 				F659105D1CB19F3C004C583B /* LoginViewController.swift */,
 				F66834701C8108DE00AB8E1D /* MainViewController.swift */,
+				F650306B1CBF2D78004393FC /* ChatViewController.swift */,
 				D0B4A0E01CB75667005AE71F /* FriendTableViewCell.swift */,
 				F665F82E1CBC8D430002E5AD /* SettingsViewController.swift */,
 				F66834741C8108DE00AB8E1D /* Main.storyboard */,
@@ -366,6 +369,7 @@
 			files = (
 				F659105E1CB19F3C004C583B /* LoginViewController.swift in Sources */,
 				A330DA701CBC5FAA000DEDB8 /* FriendFields.swift in Sources */,
+				F650306C1CBF2D78004393FC /* ChatViewController.swift in Sources */,
 				F668346F1C8108DE00AB8E1D /* AppDelegate.swift in Sources */,
 				F66834711C8108DE00AB8E1D /* MainViewController.swift in Sources */,
 				F665F82F1CBC8D430002E5AD /* SettingsViewController.swift in Sources */,
@@ -519,7 +523,7 @@
 				);
 				INFOPLIST_FILE = Turnip/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.turnip.Turnip-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = com.turnip.Turnip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Turnip/Bridging-Header.h";
 			};
@@ -536,7 +540,7 @@
 				);
 				INFOPLIST_FILE = Turnip/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.turnip.Turnip-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = com.turnip.Turnip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Turnip/Bridging-Header.h";
 			};

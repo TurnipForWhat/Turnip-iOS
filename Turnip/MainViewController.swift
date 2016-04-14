@@ -73,11 +73,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     
     override func viewDidLoad() {
-        getFriends()
         super.viewDidLoad()
+        getFriends()
         // Do any additional setup after loading the view, typically from a nib.
-        
-
+        friendTableView.delegate = self
         friendTableView.dataSource = self
         
         self.refreshControl = UIRefreshControl()
@@ -134,10 +133,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             let status = index["status"] as! Bool
             let name = index["name"] as! String
             var image_id = index["profile_picture_id"] as! String
+            let id = index["id"] as! Int
             
             
             
-            let dict: [String: AnyObject] = [FriendFields.name.rawValue: name, FriendFields.status.rawValue: status]
+            let dict: [String: AnyObject] = [FriendFields.name.rawValue: name, FriendFields.status.rawValue: status, FriendFields.id.rawValue: id]
             let json = JSON(dict)
             
             let friend = FriendWrapper(json: json)
@@ -202,8 +202,22 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("You selected cell number: \(indexPath.row)!")
-//        self.performSegueWithIdentifier("yourIdentifier", sender: self)
+        //print("You selected: \(friends[indexPath.row].name)!")
+        self.performSegueWithIdentifier("toChat", sender: indexPath.row)
+
+    }
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "toChat" {
+            if let chatViewController = segue.destinationViewController as? ChatViewController {
+                //databaseproject.jaxbot.com/chat/<0.token>/<target ID>
+
+                chatViewController.url = "http://databaseproject.jaxbot.me/chat/"
+                chatViewController.url += prefs.stringForKey("utoken")!
+                chatViewController.url += "/"
+                chatViewController.url += String(friends[sender as! Int].id!)
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
