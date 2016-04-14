@@ -185,10 +185,14 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         // Properly handle statLabel and coloring
         if(friends[indexPath.row].status!){
-            cell.FriendStatusLabel.textColor = UIColor.greenColor()
+            
+            // Salem -> RGB: 0, 177, 106
+            cell.FriendStatusLabel.textColor = UIColor(red: 0.0, green: 0.6941, blue: 0.41568, alpha: 1.0)
             cell.FriendStatusLabel?.text = "Ready to Hang"
         } else {
-            cell.FriendStatusLabel.textColor = UIColor.redColor()
+            
+            // Old Brick -> 236,100,75
+            cell.FriendStatusLabel.textColor = UIColor(red: 0.9254, green: 0.3921, blue: 0.2941, alpha: 1.0)
             cell.FriendStatusLabel?.text = "Busy"
         }
         
