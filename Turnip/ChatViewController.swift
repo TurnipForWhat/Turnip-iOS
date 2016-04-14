@@ -10,14 +10,10 @@ import UIKit
 
 class ChatViewController: UIViewController {
     
+    @IBOutlet weak var webView: UIWebView!
     var url : String = ""
 
     override func viewDidLoad() {
-
-        //Make webview
-        let webView = UIWebView(frame: self.view.bounds)
-        view.addSubview(webView)
-
         super.viewDidLoad()
         let nsURL = NSURL (string: url)
         let requestObj = NSURLRequest(URL: nsURL!);
