@@ -62,6 +62,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
 
+        // Un comment to clear user!
+        //prefs.setValue("", forKey: "utoken" as String)
+
         // If user's token is set then login
         if (prefs.stringForKey("utoken") != "") {
             print(prefs.stringForKey("utoken"))
@@ -116,6 +119,60 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                 print("User Name is: \(userName)")
                 let userEmail : NSString = result.valueForKey("email") as! NSString
                 print("User Email is: \(userEmail)")
+
+
+                let parameters = [
+                    "facebook_id" : userID
+                ]
+                Alamofire.request(.POST, "http://databaseproject.jaxbot.me/login/facebook", parameters: parameters, encoding: .JSON)
+                    .validate()
+                    .responseJSON { response in
+                        switch response.result {
+                        case .Success:
+                            if let success = response.result.value!["success"] as? NSInteger{
+                                print("/////////////////////////////")
+                                print(success)
+                                if success == 1 {
+                                    if let utoken = response.result.value!["login_token"] as? NSString{
+                                        self.prefs.setValue(utoken, forKey: "utoken" as String)
+                                        self.prefs.synchronize()
+
+                                        self.performFromLogin()
+                                    }
+                                } else {
+                                    let parameters = [
+                                        "name" : userName,
+                                        "email" : userEmail,
+                                        "fbid" : userID
+                                    ]
+                                    //Fire request
+                                    Alamofire.request(.POST, "http://databaseproject.jaxbot.me/signup", parameters: parameters, encoding: .JSON)
+                                        .responseJSON { response in
+                                            switch response.result {
+                                            case .Success:
+                                                let success = response.result.value!["success"] as? NSInteger
+                                                let utoken = response.result.value!["login_token"] as! NSString
+                                                if (success == 0) {
+                                                    self.Alert("Failed to register user")
+                                                }
+                                                else {
+                                                    print(utoken.lowercaseString)
+                                                    self.prefs.setValue(utoken, forKey: "utoken" as String)
+                                                    self.prefs.synchronize()
+                                                    self.performFromLogin()
+                                                }
+                                            case .Failure:
+                                                self.Alert("Server is Down")
+                                            }
+                                    }
+                                }
+                            }
+                        case .Failure:
+                            self.Alert("Server is Down")
+                        }
+                }
+
+
 
 
             }
@@ -185,16 +242,21 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                 //Fire request
                 Alamofire.request(.POST, "http://databaseproject.jaxbot.me/signup", parameters: parameters, encoding: .JSON)
                     .responseJSON { response in
-                        let success = response.result.value!["success"] as? NSInteger
-                        let utoken = response.result.value!["login_token"] as! NSString
-                        if (success == 0) {
-                            self.Alert("Failed to register user")
-                        }
-                        else {
-                            print(utoken.lowercaseString)
-                            self.prefs.setValue(utoken, forKey: "utoken" as String)
-                            self.prefs.synchronize()
-                            self.performFromLogin()
+                        switch response.result {
+                        case .Success:
+                            let success = response.result.value!["success"] as? NSInteger
+                            let utoken = response.result.value!["login_token"] as! NSString
+                            if (success == 0) {
+                                self.Alert("Failed to register user")
+                            }
+                            else {
+                                print(utoken.lowercaseString)
+                                self.prefs.setValue(utoken, forKey: "utoken" as String)
+                                self.prefs.synchronize()
+                                self.performFromLogin()
+                            }
+                        case .Failure:
+                            self.Alert("Server is Down")
                         }
                 }
             }
