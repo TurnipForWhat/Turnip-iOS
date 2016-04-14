@@ -175,12 +175,9 @@
                                     <constraint firstAttribute="bottom" secondItem="msH-hE-h1b" secondAttribute="bottom" constant="37" id="x20-Ff-uew"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WJv-eu-CD6">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WJv-eu-CD6">
                                 <rect key="frame" x="0.0" y="155" width="320" height="413"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="413" id="Iak-8g-u6V"/>
-                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FriendTableViewCell1" rowHeight="70" id="Ea9-L7-GGe" customClass="FriendTableViewCell" customModule="Turnip" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="70"/>
@@ -189,24 +186,20 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="69.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view tag="1" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uz8-IO-qoc">
-                                                    <rect key="frame" x="110" y="8" width="202" height="21"/>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CLW-jb-adT">
+                                                    <rect key="frame" x="17" y="5" width="60" height="60"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqu-ZM-cvP">
-                                                            <rect key="frame" x="0.0" y="0.0" width="202" height="21"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2K6-qe-K9L">
+                                                            <rect key="frame" x="0.0" y="0.0" width="60" height="59"/>
+                                                        </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <accessibility key="accessibilityConfiguration" identifier="nameLabel" label="FriendName"/>
                                                 </view>
-                                                <view tag="2" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iUC-CG-DX7">
-                                                    <rect key="frame" x="110" y="37" width="210" height="32"/>
+                                                <view tag="2" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iUC-CG-DX7">
+                                                    <rect key="frame" x="110" y="37" width="197" height="21"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s6P-lx-pVp">
-                                                            <rect key="frame" x="0.0" y="5" width="197" height="21"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="197" height="21"/>
                                                             <accessibility key="accessibilityConfiguration" identifier="FriendStatusLabel"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -216,17 +209,20 @@
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <accessibility key="accessibilityConfiguration" identifier="statusLabel" label="FriendStatus"/>
                                                 </view>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2K6-qe-K9L">
-                                                    <rect key="frame" x="14" y="0.0" width="60" height="60"/>
-                                                </imageView>
+                                                <view tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uz8-IO-qoc">
+                                                    <rect key="frame" x="110" y="8" width="197" height="21"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqu-ZM-cvP">
+                                                            <rect key="frame" x="0.0" y="0.0" width="197" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <accessibility key="accessibilityConfiguration" identifier="nameLabel" label="FriendName"/>
+                                                </view>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstItem="iUC-CG-DX7" firstAttribute="leading" secondItem="2K6-qe-K9L" secondAttribute="trailing" constant="20" id="6b1-ln-5QR"/>
-                                                <constraint firstAttribute="bottom" secondItem="2K6-qe-K9L" secondAttribute="bottom" constant="6" id="Hsf-5N-b09"/>
-                                                <constraint firstItem="2K6-qe-K9L" firstAttribute="leading" secondItem="xvD-w8-nh5" secondAttribute="leading" constant="14" id="Pfz-4t-b8F"/>
-                                                <constraint firstItem="2K6-qe-K9L" firstAttribute="top" secondItem="xvD-w8-nh5" secondAttribute="top" constant="6" id="Z7g-A8-Nhw"/>
-                                                <constraint firstItem="uz8-IO-qoc" firstAttribute="leading" secondItem="2K6-qe-K9L" secondAttribute="trailing" constant="20" id="bNQ-j9-bry"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="FriendIcon" destination="2K6-qe-K9L" id="sF0-yw-9cJ"/>
@@ -439,6 +435,6 @@
         <image name="main" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="LNB-Fr-Zql"/>
+        <segue reference="9pL-l7-auf"/>
     </inferredMetricsTieBreakers>
 </document>
