@@ -162,7 +162,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                                                     self.performFromLogin()
                                                 }
                                             case .Failure:
-                                                self.Alert("Server is Down")
+                                                self.Alert("Panic! at the Demo")
                                             }
                                     }
                                 }
