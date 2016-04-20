@@ -62,6 +62,10 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
 
+        if (prefs.stringForKey("utoken") == nil) {
+            prefs.setValue("", forKey: "utoken" as String)
+        }
+
         // Un comment to clear user!
         //prefs.setValue("", forKey: "utoken" as String)
 
