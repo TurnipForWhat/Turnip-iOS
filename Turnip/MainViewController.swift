@@ -54,17 +54,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
 
     @IBAction func logoutPressed(sender: UIButton) {
-        // Logout from FB
-        let loginManager = FBSDKLoginManager()
-        loginManager.logOut()
-
-        // Set Status to False
-        toggleStatus(false)
-        
-        //Clear utoken
-        prefs.setValue("", forKey: "utoken" as String)
-
-        self.performSegueWithIdentifier("logout", sender: self)
+        logout()
     }
     
     @IBAction func settingsPressed(sender: AnyObject) {
@@ -121,9 +111,23 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
                         self.friendTableView!.reloadData()
                     })
                 case .Failure:
-                    self.performSegueWithIdentifier("logout", sender: self)
+                    self.logout()
                 }
         }
+    }
+
+    func logout() {
+        // Logout from FB
+        let loginManager = FBSDKLoginManager()
+        loginManager.logOut()
+
+        // Set Status to False
+        toggleStatus(false)
+
+        //Clear utoken
+        prefs.setValue("", forKey: "utoken" as String)
+
+        self.performSegueWithIdentifier("logout", sender: self)
     }
     
     func populateFriends(friendsArray: NSArray){
